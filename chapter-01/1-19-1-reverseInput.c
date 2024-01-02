@@ -14,18 +14,18 @@ int main(void) {
     int length;
 
     while(length = (getLineLength(currentLine, MAXLENGTH)) > 0) {
-        //if(currentLine[0] != '\n') {
-        //    printf("Current String: %s", currentLine);
-        //}
 
         removeLeadingBlanks(currentLine);
         removeTrailingBlanks(currentLine);
         reverseCurrentLine(currentLine, reverseLine);
 
-        //if(currentLine[0] != '\n') {
-        //    printf("\nCurrent String: %s", currentLine);
-        //    printf("%s", currentLine);
-        //}
+        /*
+         if(currentLine[0] != '\n') {
+            printf("\nCurrent String: %s", currentLine);
+            printf("%s", currentLine);
+        }
+        */
+
         if(reverseLine[0] != '\n') {
             //printf("Reverse String: %s", reverseLine);
             printf("%s", reverseLine);
@@ -38,7 +38,7 @@ int getLineLength(char currentLine[], int maxLength) {
     int i;
     int letter;
 
-    for(i = 0; i < MAXLENGTH - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
+    for(i = 0; i < maxLength - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
         currentLine[i] = letter;
     }
     if (letter == '\n') {
