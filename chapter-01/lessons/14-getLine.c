@@ -6,6 +6,9 @@ int getCurrentLine(char line[], int maxline);
 
 void copy(char to[], char from[]);
 
+
+
+
 int main() {
     int len;
     int max;
@@ -26,6 +29,11 @@ int main() {
     return 0;
 }
 
+
+
+
+
+
 int getCurrentLine(char s[], int lim) {
     int c, i;
 
@@ -39,6 +47,11 @@ int getCurrentLine(char s[], int lim) {
     s[i] = '\0';
     return i;
 }
+
+
+
+
+
 
 void copy(char to[], char from[]) {
     int i;
