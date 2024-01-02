@@ -38,7 +38,7 @@ int getLineLength(char currentLine[], int maxLength) {
     int i;
     int letter;
 
-    for(i = 0; i < MAXLENGTH - 1 && (letter = getchar())!= EOF && letter != '\n'; ++i) {
+    for(i = 0; i < MAXLENGTH - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
         currentLine[i] = letter;
     }
     if (letter == '\n') {
@@ -102,7 +102,7 @@ void reverseCurrentLine(char from[], char to[]) {
     if(from[0] != '\n') {
 
         for(i = 0; from[i] != '\0'; ++i) {
-        ;
+            ;
         }
 
         i = i - 2;
@@ -112,8 +112,10 @@ void reverseCurrentLine(char from[], char to[]) {
             to[j] = from[i];
             ++j;
         }
+
         to[j] = '\n';
         to[j+1] = '\0';
+
     } else {
         to[0] = '\n';
         to[1] = '\0';
