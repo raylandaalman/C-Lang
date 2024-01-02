@@ -11,7 +11,7 @@ int main(void) {
 
     char currentLine[MAXLENGTH];
     char reverseLine[MAXLENGTH];
-    int length, adjustedLength, i;
+    int length, i;
 
     while(length = (getLineLength(currentLine, MAXLENGTH)) > 0) {
         //if(currentLine[0] != '\n') {
