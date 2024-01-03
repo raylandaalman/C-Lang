@@ -71,7 +71,7 @@ void detabLine(char tab[], char detab[], int tabWidth) {
             ++j;
             ++columnCounter;
         } else if(tab[i] == '\t') {
-            spaces =  tabWidth - columnCounter;
+            spaces = tabWidth - columnCounter;
             while(spaces > 0) {
                 detab[j] = ' ';
                 ++j;
