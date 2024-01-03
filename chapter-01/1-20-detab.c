@@ -1,6 +1,6 @@
 /*
 
-Write a program 'detab' that repalces tabs
+Write a program 'detab' that replaces tabs
  in the input with the proper number of blanks
   to space the next tab stop.
 
