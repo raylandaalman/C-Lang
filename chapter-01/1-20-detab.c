@@ -59,9 +59,8 @@ void detabLine(char tab[], char detab[], int tabWidth) {
     int spaces;
     int columnCounter;
 
-    spaces = 0;
-    j = 0;
-    columnCounter = 0;
+    columnCounter = spaces = j = 0;
+
 
     for(i = 0; tab[i] != '\0'; ++i) {
         if(columnCounter >= tabWidth) {
