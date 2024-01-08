@@ -24,7 +24,6 @@ void entabFunction(char currentLine[], char entabLine[], int tabWidth);
 
 int main(void) {
 
-int letter;
 int length;
 
 char currentLine[MAXLENGTH];
@@ -34,7 +33,7 @@ char entabLine[MAXLENGTH];
         entabFunction(currentLine, entabLine, TABWIDTH);
 
         printf("\nCurrent Line:\n%s", currentLine);
-        printf("\nEntab   Line:\n%s\n", entabLine);
+        printf("\nEntab   Line:\n%s\n\n", entabLine);
     }
 
 }
@@ -46,7 +45,7 @@ int getLineLength(char currentLine[], int maxLength) {
     int i;
     int letter;
 
-    for(i = 0; i < MAXLENGTH - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
+    for(i = 0; i < maxLength - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
         currentLine[i] = letter;
     }
 
