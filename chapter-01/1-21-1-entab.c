@@ -113,16 +113,3 @@ void entabFunction(char currentLine[MAXLENGTH], char entabLine[MAXLENGTH], int t
 
     entabLine[j] = '\0';
 }
-
-
-int addRemainingSpaces(char entabLine[MAXLENGTH], int tabWidth, int remainingSpaces, int j) {
-
-
-    while(remainingSpaces > 0) {
-        entabLine[j] = ' ';
-        --remainingSpaces;
-        ++j;
-    }
-
-    return j;
-}
