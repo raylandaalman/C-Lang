@@ -17,9 +17,9 @@ When either a tab or a single blank would suffice
 #define MAXLENGTH 1000
 #define TABWIDTH 8
 
-int getLineLength(char currentLine[MAXLENGTH], int maxLength);
-void entabFunction(char currentLine[MAXLENGTH], char entabLine[MAXLENGTH], int tabWidth);
-int addRemainingSpaces(char entabLine[MAXLENGTH], int tabWidth, int remainingSpaces, int j);
+int getLineLength(char currentLine[], int maxLength);
+void entabFunction(char currentLine[], char entabLine[], int tabWidth);
+
 
 
 int main(void) {
@@ -39,7 +39,9 @@ char entabLine[MAXLENGTH];
 
 }
 
-int getLineLength(char currentLine[MAXLENGTH], int maxLength) {
+
+
+int getLineLength(char currentLine[], int maxLength) {
 
     int i;
     int letter;
@@ -58,7 +60,9 @@ int getLineLength(char currentLine[MAXLENGTH], int maxLength) {
 
 }
 
-void entabFunction(char currentLine[MAXLENGTH], char entabLine[MAXLENGTH], int tabWidth) {
+
+
+void entabFunction(char currentLine[], char entabLine[], int tabWidth) {
 
     int i, j;
     int spaceWidth;
