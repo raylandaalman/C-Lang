@@ -20,7 +20,6 @@ Make sure your program does something intelligent
 
 int getLength(char inputString[], int maxLength);
 
-
 int main(void) {
 
     char inputString[MAXLENGTH];
@@ -39,8 +38,6 @@ int main(void) {
         lastBlank = -1;
 
         for(i = 0; inputString[i] != '\n'; ++i) {
-
-
 
             if(inputString[i] == ' ' && columnLocation < MAXCOLUMNS) {
                 foldString[i] = inputString[i];
@@ -98,7 +95,7 @@ int main(void) {
         }
         foldString[i] = '\0';
 
-        printf("Input String:\n%s\n\n", inputString);
+        printf("\nInput String:\n%s\n\n", inputString);
         printf("Fold String:\n%s\n\n", foldString);
     }
 }
