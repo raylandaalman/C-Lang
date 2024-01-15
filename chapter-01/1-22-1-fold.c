@@ -11,108 +11,102 @@ Make sure your program does something intelligent
 
 */
 
-
 #include <stdio.h>
 
 #define MAXLENGTH 1000
-#define MAXCOLUMNS 80
+#define COLUMNWIDTH 80
 #define TABLENGTH 8
 
-int getLength(char inputString[], int maxLength);
+int getLineLength(char string[], int maxLength);
+
 
 int main(void) {
 
-    char inputString[MAXLENGTH];
+    char currentString[MAXLENGTH];
     char foldString[MAXLENGTH];
-
-    int i, j;
-
+    int columnPosition;
+    int blankLocation;
+    int tabBreakLength;
     int length;
-    int columnLocation;
-    int lastBlank;
-    int wordLength;
+    int i;
 
-    while((length = getLength(inputString, MAXLENGTH)) > 0) {
+    columnPosition = 0;
+    tabBreakLength = TABLENGTH;
 
-        columnLocation = 0;
-        lastBlank = -1;
 
-        for(i = 0; inputString[i] != '\n'; ++i) {
+    while((length = getLineLength(currentString, MAXLENGTH)) > 0) {
 
-            if(inputString[i] == ' ' && columnLocation < MAXCOLUMNS) {
-                foldString[i] = inputString[i];
-                lastBlank = i;
-                ++columnLocation;
-            } else if(inputString[i] == ' ' && columnLocation >= MAXCOLUMNS) {
-                foldString[i] = '\n';
-                columnLocation = 0;
-                lastBlank = i;
+        for(i = 0; currentString[i] != '\0'; ++i) {
+
+            if(tabBreakLength <= 0) {
+                tabBreakLength = TABLENGTH;
             }
 
-            if(inputString[i] == '\t' && (columnLocation + TABLENGTH) < MAXCOLUMNS) {
-                foldString[i] = '\t';
-                columnLocation = columnLocation + TABLENGTH;
-                lastBlank = i;
-                printf("Column Location: %d\n", columnLocation);
-            } else if(inputString[i] == '\t' && (columnLocation + TABLENGTH) >= MAXCOLUMNS) {
-                foldString[i] = '\n';
-                columnLocation = 0;
-                lastBlank = i;
+            if(currentString[i] == ' ') {
+                blankLocation = i;
+                foldString[i] = currentString[i];
+                ++columnPosition;
+                --tabBreakLength;
+            } else if(currentString[i] == '\t') {
+                blankLocation = i;
+                foldString[i] = currentString[i];
+                columnPosition = columnPosition + tabBreakLength;
+                tabBreakLength = TABLENGTH;
+            } else if(currentString[i] == '\n') {
+                foldString[i] = currentString[i];
+                columnPosition = 0;
+                tabBreakLength = TABLENGTH;
+            } else {
+                foldString[i] = currentString[i];
+                ++columnPosition;
+                --tabBreakLength;
             }
 
-            if(inputString[i] != ' ' && inputString[i] != '\t') {
-
-                wordLength = 0;
-
-                for(j = i; inputString[j] != ' ' && inputString[j] != '\t' && inputString[j] != '\n' && inputString[j] != '\0'; ++j) {
-                 //printf("Value of i: %d, Value of j: %d\n", i, j);
-                 ++wordLength;
-                }
-
-                //printf("World Length: %d\n", wordLength);
-                //printf("Value of i: %d, Value of j: %d\n", i, j);
-
-                if((columnLocation + wordLength) <= MAXCOLUMNS) {
-                    for(i; i < j; ++i) {
-                        foldString[i] = inputString[i];
-                        ++columnLocation;
-                    }
-                } else if((columnLocation + wordLength) > MAXCOLUMNS) {
-                    foldString[lastBlank] = '\n';
-                    columnLocation = 0;
-                    for(i; i < j; ++i) {
-                        foldString[i] = inputString[i];
-                        ++columnLocation;
-                    }
-                }
-            --i;
-            //printf("End: Value of i: %d, Value of j: %d\n", i, j);
+            if(columnPosition > COLUMNWIDTH) {
+                foldString[blankLocation] = '\n';
+                columnPosition = i - blankLocation;
+                /*
+                printf("- LINE BREAK: Current letter: ");
+                putchar(currentString[i]);
+                printf("\n");
+                */
             }
+
+            /*
+            printf("Column Position: %2d | Letter: ", columnPosition);
+            putchar(currentString[i]);
+            printf("\n");
+            */
+            //printf("Value of i: %d\n", i);
         }
-        if(inputString[i] == '\n') {
-            foldString[i] = '\n';
-            ++i;
-        }
+
         foldString[i] = '\0';
 
-        printf("\nInput String:\n%s\n\n", inputString);
-        printf("Fold String:\n%s\n\n", foldString);
+        /*
+        for(i = 0; currentString[i] != '\0'; ++i) {
+            printf("\ncharacter: ");
+            putchar(currentString[i]);
+        }
+        */
+
+        printf("\nProvided String:\n%s\n\n", currentString);
+        printf("Folded String:\n%s\n", foldString);
+
     }
+
 }
 
-int getLength(char inputString[], int maxLength) {
+
+int getLineLength(char string[], int maxLength) {
 
     int i;
     int letter;
 
-    for(i = 0; i < maxLength - 1 && (letter = getchar()) != EOF && letter != '\n'; ++i) {
-        inputString[i] = letter;
-    }
-    if(letter == '\n') {
-        inputString[i] = letter;
-        ++i;
+    for(i = 0; i < maxLength && (letter = getchar()) != EOF; ++i) {
+        string[i] = letter;
     }
 
-    inputString[i] = '\0';
+    string[i] = '\0';
+
     return i;
 }
