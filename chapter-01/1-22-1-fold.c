@@ -38,7 +38,6 @@ int main(void) {
     offset = 0;
     j = 0;
 
-
     while((length = getLineLength(currentString, MAXLENGTH)) > 0) {
 
         for(i = 0; currentString[i] != '\0'; ++i) {
@@ -94,7 +93,6 @@ int main(void) {
                 printf("\n");
                 */
             }
-
             //printf("Blank Location: %d\n", blankLocation);
             /*
             printf("Column Position: %2d | Letter: ", columnPosition);
@@ -103,23 +101,17 @@ int main(void) {
             */
             //printf("Value of i: %d\n", i);
         }
-
         foldString[j] = '\0';
-
         /*
         for(i = 0; currentString[i] != '\0'; ++i) {
             printf("\ncharacter: ");
             putchar(currentString[i]);
         }
         */
-
         printf("\nProvided String:\n%s\n\n", currentString);
         printf("Folded String:\n%s\n", foldString);
-
     }
-
 }
-
 
 int getLineLength(char string[], int maxLength) {
 
@@ -129,8 +121,6 @@ int getLineLength(char string[], int maxLength) {
     for(i = 0; i < maxLength && (letter = getchar()) != EOF; ++i) {
         string[i] = letter;
     }
-
     string[i] = '\0';
-
     return i;
 }
