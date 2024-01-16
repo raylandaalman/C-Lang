@@ -6,7 +6,7 @@ Write a program to 'fold' long input lines
    column of input.
 
 Make sure your program does something intelligent
- with very long lines, and if there are no blansk
+ with very long lines, and if there are no blanks
   or tabs before the specified column.
 
 */
