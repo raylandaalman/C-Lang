@@ -14,7 +14,7 @@ Make sure your program does something intelligent
 #include <stdio.h>
 
 #define MAXLENGTH 1000
-#define COLUMNWIDTH 80
+#define COLUMNWIDTH 20
 #define TABLENGTH 8
 
 int getLineLength(char string[], int maxLength);
@@ -84,7 +84,7 @@ int main(void) {
                     //printf("Column Location: %d\n", columnPosition);
                 } else {
                     foldString[blankLocation] = '\n';
-                    columnPosition = i - blankLocation +1;
+                    columnPosition = i - blankLocation;
                     blankLocation = 0;
                 }
                 /*
