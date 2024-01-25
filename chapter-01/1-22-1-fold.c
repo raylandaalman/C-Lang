@@ -14,7 +14,7 @@ Make sure your program does something intelligent
 #include <stdio.h>
 
 #define MAXLENGTH 1000
-#define COLUMNWIDTH 20
+#define COLUMNWIDTH 80
 #define TABLENGTH 8
 
 int getLineLength(char string[], int maxLength);
